@@ -3,6 +3,7 @@ h1 Listing categories
 table
   thead
     tr
+      th
       th Name
       th Mnemonic
       th
@@ -12,7 +13,7 @@ table
   tbody
     - @categories.each do |category|
       tr
-        td = image_tag category.poster.url(:medium)
+        td = image_tag category.poster.url(:thumb)
         td = category.name
         td = category.name
         td = category.mnemonic

@@ -1,0 +1,18 @@
+= form_for @flavor_group, multipart: true do |f|
+  - if @flavor_group.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@flavor_group.errors.count, "error")} prohibited this flavor_group from being saved:"
+      ul
+        - @flavor_group.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :mnemonic
+    = f.text_field :mnemonic
+  .field
+    = f.label :poster
+    = f.file_field :poster
+  .actions = f.submit

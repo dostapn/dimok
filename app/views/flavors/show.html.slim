@@ -1,0 +1,16 @@
+p
+  strong Name:
+  = @flavor.name
+p
+  strong Mnemonic:
+  = @flavor.mnemonic
+p
+  strong Flavor_group_ids:
+  = @flavor.flavor_groups.pluck(:name)
+p
+  strong Poster:
+  = image_tag @flavor.poster.url(:medium)
+
+= link_to 'Edit', edit_flavor_path(@flavor)
+'|
+= link_to 'Back', flavors_path

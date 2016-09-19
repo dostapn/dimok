@@ -1,0 +1,1 @@
+json.partial! "flavor_groups/flavor_group", flavor_group: @flavor_group

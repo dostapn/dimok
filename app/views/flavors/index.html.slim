@@ -1,0 +1,27 @@
+h1 Listing flavors
+
+table
+  thead
+    tr
+      th
+      th Name
+      th Mnemonic
+      th Flavor_groups
+      th
+      th
+      th
+
+  tbody
+    - @flavors.each do |flavor|
+      tr
+        td = image_tag flavor.poster.url(:thumb)
+        td = flavor.name
+        td = flavor.mnemonic
+        td = cdflavor.flavor_groups.pluck(:name)
+        td = link_to 'Show', flavor
+        td = link_to 'Edit', edit_flavor_path(flavor)
+        td = link_to 'Destroy', flavor, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Flavor', new_flavor_path

@@ -2,7 +2,9 @@
   h2 SERVICES
   h4 What we offer
   br
-  .row
+
+  .separator Категории
+  .row.clearfix
     - @categories.each do |category|
       .col-sm-3.slideanim
         span
@@ -10,7 +12,18 @@
         h4 = category.name
         p = category.mnemonic
         .col-sm-4
-  .row
+  br
+  br
+  .separator Группы вкусов
+  .row.clearfix
+    - @flavor_groups.each do |flavor_group|
+      .col-sm-2.slideanim
+        span
+          = image_tag flavor_group.poster.url(:small), class: 'img-circle'
+        h4 = flavor_group.name
+        p = flavor_group.mnemonic
+        .col-sm-4
+  /.row
     .col-sm-4
       span.logo-small = fa_icon 'power-off'
       h4 POWER
@@ -23,9 +36,7 @@
       span.logo-small = fa_icon 'lock'
       h4 JOB DONE
       p Lorem ipsum dolor sit amet..
-  br
-  br
-  .row
+  /.row
     .col-sm-4
       span.logo-small = fa_icon 'leaf'
       h4 GREEN
@@ -39,7 +50,7 @@
       h4 HARD WORK
       p Lorem ipsum dolor sit amet..
 
-  .row
+  /.row
     .col-sm-4
       .panel.item.panel-primary
         .panel-heading BLACK FRIDAY DEAL
@@ -58,7 +69,7 @@
         .panel-body
           img.img-responsive alt="Image" src="http://placehold.it/150x80?text=IMAGE" style="width:100%" /
         .panel-footer Buy 50 mobiles and get a gift card
-  .row
+  /.row
     .col-sm-4
       .panel.item.panel-primary
         .panel-heading BLACK FRIDAY DEAL
@@ -77,12 +88,3 @@
         .panel-body
           img.img-responsive alt="Image" src="http://placehold.it/150x80?text=IMAGE" style="width:100%" /
         .panel-footer Buy 50 mobiles and get a gift card
-
-  .row
-    - @categories.each do |category|
-      .col-sm-3.slideanim
-        span
-          = image_tag category.poster.url(:small), class: 'img-circle'
-        h4 = category.name
-        p = category.mnemonic
-        .col-sm-4

@@ -22,27 +22,27 @@ html lang="ru"
               a href=(root_url) Главная
             li class=('active' if params[:controller] == 'categories')
               a href=(categories_url) Категории
-            li
-              a href="#"  Stores
-            li
-              a href="#"  Contact
+            li class=('active' if params[:controller] == 'flavor_groups')
+              a href=(flavor_groups_url) Группы вкусов
+            li class=('active' if params[:controller] == 'flavors')
+              a href=(flavors_url) Вкусы
           ul.nav.navbar-nav.navbar-right
             li
               a href="#"
                 span = fa_icon 'user'
-                | Your Account
+                | Учетная запись
             li
               a href="#"
                 span = fa_icon 'shopping-cart'
-                | Cart
-                .badge 8
+                | Корзина
+                .badge
 
     .jumbotron.text-center
       h1 Online Store
       p Mission, Vission & Values
     .container-fluid
       - flash.each do |type, message|
-        .alert.fade.in = bootstrap_class_for(type)
+        .alert.fade.in class=(bootstrap_class_for(type))
           button.close data-dismiss="alert" ×
           = message
       == yield

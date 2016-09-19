@@ -1,0 +1,1 @@
+json.array! @flavor_groups, partial: 'flavor_groups/flavor_group', as: :flavor_group
