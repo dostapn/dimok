@@ -1,0 +1,55 @@
+doctype html
+html lang="ru"
+  head
+    title Dimok
+    = csrf_meta_tags
+
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => 'reload'
+    = javascript_include_tag 'application',               'data-turbolinks-track' => 'reload'
+
+  body
+    nav.navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle data-target="#myNavbar" data-toggle="collapse" type="button"
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand href=(root_url) Дымок
+        #myNavbar.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li class=('active' if params[:controller] == 'home')
+              a href=(root_url) Главная
+            li class=('active' if params[:controller] == 'categories')
+              a href=(categories_url) Категории
+            li
+              a href="#"  Stores
+            li
+              a href="#"  Contact
+          ul.nav.navbar-nav.navbar-right
+            li
+              a href="#"
+                span = fa_icon 'user'
+                | Your Account
+            li
+              a href="#"
+                span = fa_icon 'shopping-cart'
+                | Cart
+                .badge 8
+
+    .jumbotron.text-center
+      h1 Online Store
+      p Mission, Vission & Values
+    .container-fluid
+      - flash.each do |type, message|
+        .alert.fade.in = bootstrap_class_for(type)
+          button.close data-dismiss="alert" ×
+          = message
+      == yield
+
+    footer.container-fluid.text-center
+      p Online Store Copyright
+      form.form-inline
+        | Get deals:
+        input.form-control placeholder=("Email Address") size="50" type="email" /
+        button.btn.btn-danger type="button"  Sign Up
