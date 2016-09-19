@@ -10,12 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160916223424) do
+ActiveRecord::Schema.define(version: 20160919155234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.string   "mnemonic"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
+  end
+
+  create_table "flavor_groups", force: :cascade do |t|
+    t.string   "name"
+    t.string   "mnemonic"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
+  end
+
+  create_table "flavor_groups_flavors", id: false, force: :cascade do |t|
+    t.integer "flavor_id",       null: false
+    t.integer "flavor_group_id", null: false
+  end
+
+  create_table "flavors", force: :cascade do |t|
     t.string   "name"
     t.string   "mnemonic"
     t.datetime "created_at",          null: false
