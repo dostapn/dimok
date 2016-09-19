@@ -10,7 +10,7 @@
         span
           = image_tag category.poster.url(:small), class: 'img-circle'
         h4 = category.name
-        p = category.mnemonic
+        p = link_to category.mnemonic, category
         .col-sm-4
   br
   br
@@ -21,7 +21,7 @@
         span
           = image_tag flavor_group.poster.url(:small), class: 'img-circle'
         h4 = flavor_group.name
-        p = flavor_group.mnemonic
+        p = link_to flavor_group.mnemonic, flavor_group
         .col-sm-4
   /.row
     .col-sm-4

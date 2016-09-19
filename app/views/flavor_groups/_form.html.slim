@@ -13,6 +13,9 @@
     = f.label :mnemonic
     = f.text_field :mnemonic
   .field
+    = f.label :flavor_ids
+    = f.select :flavor_ids, options_for_select(@flavors, @flavor_group.flavor_ids), {}, multiple: true
+  .field
     = f.label :poster
     = f.file_field :poster
   .actions = f.submit

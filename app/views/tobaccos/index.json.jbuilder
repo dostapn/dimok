@@ -1,0 +1,1 @@
+json.array! @tobaccos, partial: 'tobaccos/tobacco', as: :tobacco

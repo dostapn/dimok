@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160919155234) do
+ActiveRecord::Schema.define(version: 20160919192311) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "brands", force: :cascade do |t|
+    t.string   "name"
+    t.string   "mnemonic"
+    t.string   "country"
+    t.text     "description"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
+  end
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -53,4 +66,33 @@ ActiveRecord::Schema.define(version: 20160919155234) do
     t.datetime "poster_updated_at"
   end
 
+  create_table "flavors_tobaccos", id: false, force: :cascade do |t|
+    t.integer "tobacco_id", null: false
+    t.integer "flavor_id",  null: false
+  end
+
+  create_table "tobaccos", force: :cascade do |t|
+    t.string   "name"
+    t.string   "mnemonic"
+    t.integer  "weight"
+    t.integer  "smokiness"
+    t.integer  "stregth"
+    t.integer  "heat_resistance"
+    t.string   "basis"
+    t.float    "price"
+    t.integer  "category_id"
+    t.integer  "brand_id"
+    t.text     "description"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.string   "poster_file_name"
+    t.string   "poster_content_type"
+    t.integer  "poster_file_size"
+    t.datetime "poster_updated_at"
+    t.index ["brand_id"], name: "index_tobaccos_on_brand_id", using: :btree
+    t.index ["category_id"], name: "index_tobaccos_on_category_id", using: :btree
+  end
+
+  add_foreign_key "tobaccos", "brands"
+  add_foreign_key "tobaccos", "categories"
 end

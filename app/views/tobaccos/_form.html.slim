@@ -1,0 +1,48 @@
+= form_for @tobacco, multipart: true do |f|
+  - if @tobacco.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@tobacco.errors.count, "error")} prohibited this tobacco from being saved:"
+      ul
+        - @tobacco.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :mnemonic
+    = f.text_field :mnemonic
+  .field
+    = f.label :weight
+    = f.number_field :weight
+  .field
+    = f.label :smokiness
+    = f.number_field :smokiness
+  .field
+    = f.label :stregth
+    = f.number_field :stregth
+  .field
+    = f.label :heat_resistance
+    = f.number_field :heat_resistance
+  .field
+    = f.label :basis
+    = f.text_field :basis
+  .field
+    = f.label :price
+    = f.text_field :price
+  .field
+    = f.label :category
+    = f.select :category_id, options_for_select(@categories, @tobacco.category_id)
+  .field
+    = f.label :brand
+    = f.select :brand_id, options_for_select(@brands, @tobacco.brand_id)
+  .field
+    = f.label :flavor_ids
+    = f.select :flavor_ids, options_for_select(@flavors, @tobacco.flavor_ids), {}, multiple: true
+  .field
+    = f.label :description
+    = f.text_area :description
+  .field
+    = f.label :poster
+    = f.file_field :poster
+  .actions = f.submit

@@ -1,2 +1,0 @@
-class Poster < ApplicationRecord
-end

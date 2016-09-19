@@ -1,4 +1,4 @@
-= form_for @flavor, multupart: true do |f|
+= form_for @flavor, multipart: true do |f|
   - if @flavor.errors.any?
     #error_explanation
       h2 = "#{pluralize(@flavor.errors.count, "error")} prohibited this flavor from being saved:"

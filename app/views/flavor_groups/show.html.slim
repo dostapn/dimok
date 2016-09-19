@@ -5,6 +5,9 @@ p
   strong Mnemonic:
   = @flavor_group.mnemonic
 p
+  strong Flavor_ids:
+  = @flavor_group.flavors.pluck(:name)
+p
   strong Poster:
   = image_tag @flavor_group.poster.url(:medium)
 

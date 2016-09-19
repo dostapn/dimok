@@ -28,7 +28,6 @@ class FlavorsController < ApplicationController
     @flavor = Flavor.new(flavor_params)
     respond_to do |format|
       if @flavor.save
-        @flavor.flavor_groups = params[:flavor_group_ids] if params[:flavor_group_ids]
         format.html { redirect_to @flavor, notice: 'Flavor was successfully created.' }
         format.json { render :show, status: :created, location: @flavor }
       else
@@ -43,7 +42,6 @@ class FlavorsController < ApplicationController
   def update
     respond_to do |format|
       if @flavor.update(flavor_params)
-        @flavor.flavor_groups = params[:flavor_group_ids] if params[:flavor_group_ids]
         format.html { redirect_to @flavor, notice: 'Flavor was successfully updated.' }
         format.json { render :show, status: :ok, location: @flavor }
       else

@@ -1,0 +1,29 @@
+h1 Listing brands
+
+table
+  thead
+    tr
+      th
+      th Name
+      th Mnemonic
+      th Country
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @brands.each do |brand|
+      tr
+        td = image_tag brand.poster.url(:thumb)
+        td = brand.name
+        td = brand.mnemonic
+        td = brand.country
+        td = brand.description
+        td = link_to 'Show', brand
+        td = link_to 'Edit', edit_brand_path(brand)
+        td = link_to 'Destroy', brand, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Brand', new_brand_path

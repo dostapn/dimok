@@ -1,0 +1,45 @@
+h1 Listing tobaccos
+
+table
+  thead
+    tr
+      th
+      th Name
+      th Mnemonic
+      th Weight
+      th Smokiness
+      th Stregth
+      th Heat resistance
+      th Basis
+      th Price
+      th Category
+      th Brand
+      th Flavor
+      th Description
+      th
+      th
+      th
+
+  tbody
+    - @tobaccos.each do |tobacco|
+      tr
+        td = image_tag tobacco.poster.url(:thumb)
+        td = tobacco.name
+        td = tobacco.mnemonic
+        td = tobacco.weight
+        td = tobacco.smokiness
+        td = tobacco.stregth
+        td = tobacco.heat_resistance
+        td = tobacco.basis
+        td = tobacco.price
+        td = tobacco.category.try(:name)
+        td = tobacco.brand.try(:name)
+        td = tobacco.flavors.pluck(:name)
+        td = tobacco.description
+        td = link_to 'Show', tobacco
+        td = link_to 'Edit', edit_tobacco_path(tobacco)
+        td = link_to 'Destroy', tobacco, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Tobacco', new_tobacco_path

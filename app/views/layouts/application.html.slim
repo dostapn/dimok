@@ -26,6 +26,10 @@ html lang="ru"
               a href=(flavor_groups_url) Группы вкусов
             li class=('active' if params[:controller] == 'flavors')
               a href=(flavors_url) Вкусы
+            li class=('active' if params[:controller] == 'brands')
+              a href=(brands_url) Брэнды
+            li class=('active' if params[:controller] == 'tobaccos')
+              a href=(tobaccos_url) Табаки
           ul.nav.navbar-nav.navbar-right
             li
               a href="#"

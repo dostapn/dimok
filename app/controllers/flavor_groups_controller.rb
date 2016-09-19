@@ -1,5 +1,6 @@
 class FlavorGroupsController < ApplicationController
   before_action :set_flavor_group, only: [:show, :edit, :update, :destroy]
+  before_action :set_flavors, only: [:new, :create, :edit, :update]
 
   # GET /flavor_groups
   # GET /flavor_groups.json
@@ -62,6 +63,10 @@ class FlavorGroupsController < ApplicationController
   end
 
   private
+  def set_flavors
+    @flavors = Flavor.all.pluck(:name, :id)
+  end
+
   # Use callbacks to share common setup or constraints between actions.
   def set_flavor_group
     @flavor_group = FlavorGroup.find_by_mnemonic!(params[:id])
@@ -69,6 +74,6 @@ class FlavorGroupsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def flavor_group_params
-    params.require(:flavor_group).permit(:name, :mnemonic, :poster)
+    params.require(:flavor_group).permit(:name, :mnemonic, {flavor_ids: []}, :poster)
   end
 end

@@ -1,0 +1,44 @@
+p
+  strong Name:
+  = @tobacco.name
+p
+  strong Mnemonic:
+  = @tobacco.mnemonic
+p
+  strong Weight:
+  = @tobacco.weight
+p
+  strong Smokiness:
+  = @tobacco.smokiness
+p
+  strong Stregth:
+  = @tobacco.stregth
+p
+  strong Heat resistance:
+  = @tobacco.heat_resistance
+p
+  strong Basis:
+  = @tobacco.basis
+p
+  strong Price:
+  = @tobacco.price
+p
+  strong Category:
+  = @tobacco.category.try(:name)
+p
+  strong Brand:
+  = @tobacco.brand.try(:name)
+p
+  strong Flavor:
+  = @tobacco.flavors.pluck(:name)
+p
+  strong Description:
+  = @tobacco.description
+p
+  strong Poster:
+  = image_tag @tobacco.poster.url(:medium)
+
+
+= link_to 'Edit', edit_tobacco_path(@tobacco)
+'|
+= link_to 'Back', tobaccos_path
